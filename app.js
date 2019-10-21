@@ -137,22 +137,27 @@ var controller = (function(budgetCtrl, UICtrl){
         });
     };
 
+    var updateBudget = function(){
+        // Calculate budget
+        // Return budget
+        // Display the budget on the display
+    }
 
     var ctrlAddItem = function(){
         var input, newItem;
         // Add field input data
-            input = UICtrl.getInput();
+        input = UICtrl.getInput();
+
+        if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
         // Add the item to the budget controller
-            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
         // Add the item to the ui
-            UICtrl.addListItem(newItem, input.type);
-
+        UICtrl.addListItem(newItem, input.type);
         // Clear the fields
-            UICtrl.clearFields();
-        // Calculate the budget
-
-        // Display the budget
-
+        UICtrl.clearFields();
+        // Calculate and update budget
+        updateBudget();
+        }
     }
 
     return {
